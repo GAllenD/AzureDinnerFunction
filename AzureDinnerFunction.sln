@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDinnerFunction", "AzureDinnerFunction\AzureDinnerFunction.csproj", "{B6B55A5C-E5B5-4338-B50A-D5A88A8B2508}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDinnerFunction", "AzureDinnerFunction\AzureDinnerFunction.csproj", "{B6B55A5C-E5B5-4338-B50A-D5A88A8B2508}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDinnerFunctionTests", "AzureDinnerFunctionTests\AzureDinnerFunctionTests.csproj", "{C0B3E9DC-F2A6-47CF-AA33-C4F3057AEC3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B6B55A5C-E5B5-4338-B50A-D5A88A8B2508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6B55A5C-E5B5-4338-B50A-D5A88A8B2508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6B55A5C-E5B5-4338-B50A-D5A88A8B2508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0B3E9DC-F2A6-47CF-AA33-C4F3057AEC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B3E9DC-F2A6-47CF-AA33-C4F3057AEC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B3E9DC-F2A6-47CF-AA33-C4F3057AEC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B3E9DC-F2A6-47CF-AA33-C4F3057AEC3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
