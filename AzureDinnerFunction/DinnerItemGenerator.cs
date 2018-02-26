@@ -8,7 +8,7 @@ namespace AzureDinnerFunction
 {
     public class DinnerItemGenerator
     {
-        private  List<DinnerItem> AllItems = new List<DinnerItem>()
+        private List<DinnerItem> AllItems = new List<DinnerItem>()
         {
             new DinnerItem("Cream chicken over Biscuits", DinnerItemType.Chicken, DinnerItemRanking.Medium),
             new DinnerItem("Tomato Soup and Grilled Cheese", DinnerItemType.Sandwich, DinnerItemRanking.Medium),
@@ -28,8 +28,13 @@ namespace AzureDinnerFunction
             new DinnerItem("Wedding soup", DinnerItemType.Soup, DinnerItemRanking.Medium),
             new DinnerItem("Sweet and sour chicken", DinnerItemType.Chicken, DinnerItemRanking.High),
             new DinnerItem("Hot dogs and kraut", DinnerItemType.Other, DinnerItemRanking.Medium),
-            new DinnerItem("Mini pancakes and sausage", DinnerItemType.Breakfast, DinnerItemRanking.Medium),
-
+            new DinnerItem("Tomato Pasta", DinnerItemType.Pasta, DinnerItemRanking.Medium),
+            new DinnerItem("Tacos!", DinnerItemType.Other, DinnerItemRanking.Medium),
+            new DinnerItem("Chicken and cheese quesadilla", DinnerItemType.Other, DinnerItemRanking.Medium),
+            new DinnerItem("Meatball subs", DinnerItemType.Sandwich, DinnerItemRanking.Medium),
+            new DinnerItem("Cold cut and avacodo sandwiches", DinnerItemType.Sandwich, DinnerItemRanking.Medium),
+            new DinnerItem("Make-your-own meal day. Likely cereal and/or whatever we have", DinnerItemType.Other, DinnerItemRanking.Medium),
+            new DinnerItem("Homemade pizza", DinnerItemType.Pizza, DinnerItemRanking.Medium)
         };
 
 
@@ -39,18 +44,29 @@ namespace AzureDinnerFunction
             var random = new Random();
 
 
-            for (var i = 1; i < numOfItems+1; i++)
+            for (var i = 1; i < numOfItems + 1; i++)
             {
                 var index = random.Next(AllItems.Count);
 
-                items.Add(AllItems[index]);
+                if (HasMaxNumOfType(items, AllItems[index].Type))
+                {
+                    items.Add(AllItems[index]);
 
-                AllItems.Remove(AllItems[index]);
+                    AllItems.Remove(AllItems[index]);
+                }
             }
 
             return items;
         }
 
+        private bool HasMaxNumOfType(List<DinnerItem> items, DinnerItemType type)
+        {
+            if (items.Count(i => i.Type == type) > 2)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 
 }

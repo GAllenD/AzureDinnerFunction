@@ -6,13 +6,14 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Text;
 
 namespace AzureDinnerFunction
 {
     public static class DinnerFunction
     {
         [FunctionName("DinnerFunction")]
-        public static void Run([TimerTrigger("0 */2 * * * *")]TimerInfo myTimer, TraceWriter log)
+        public static void Run([TimerTrigger("0 00 3 * * Mon")]TimerInfo myTimer, TraceWriter log)
         {
             log.Info($"Start: {DateTime.Now}");
 
@@ -32,6 +33,8 @@ namespace AzureDinnerFunction
         private static SendGridMessage GetMessage(DinnerItemGenerator itemGenerator)
         {
             var msg = new SendGridMessage();
+            var messageHtml = new StringBuilder();
+            messageHtml.Append("<h2>Weekly Meal Planning List</h2><br /><ul>");
 
             msg.SetFrom(new EmailAddress("Dinner@idea.com", "Dinner Options"));
             msg.AddTos(GetRecipients());
@@ -39,9 +42,13 @@ namespace AzureDinnerFunction
 
             foreach(var item in itemGenerator.GetDinnerOptions(5))
             {
-                msg.AddContent(MimeType.Text, "Idea: " + item.Title + " Type: " + item.Type);
+                messageHtml.Append("<li><b>Idea:</b> " + item.Title + "  <b>Type:</b> " + item.Type + "</li>");
 
             }
+
+            messageHtml.Append("</ul>");
+
+            msg.AddContent(MimeType.Html, messageHtml.ToString());
 
             return msg;
         }

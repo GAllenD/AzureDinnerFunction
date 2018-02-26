@@ -33,6 +33,7 @@
         Sandwich,
         Soup,
         Breakfast,
-        Other
+        Other,
+        Pizza
     }
 }
