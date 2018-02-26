@@ -48,24 +48,27 @@ namespace AzureDinnerFunction
             {
                 var index = random.Next(AllItems.Count);
 
-                if (HasMaxNumOfType(items, AllItems[index].Type))
+                if (MaxNumberOfTypeReached(items, AllItems[index].Type))
                 {
-                    items.Add(AllItems[index]);
-
-                    AllItems.Remove(AllItems[index]);
+                    AllItems.RemoveAll(r => r.Type == AllItems[index].Type);
+                    index = random.Next(AllItems.Count);
                 }
+
+                items.Add(AllItems[index]);
+
+                AllItems.Remove(AllItems[index]);
             }
 
             return items;
         }
 
-        private bool HasMaxNumOfType(List<DinnerItem> items, DinnerItemType type)
+        public bool MaxNumberOfTypeReached(List<DinnerItem> items, DinnerItemType type)
         {
             if (items.Count(i => i.Type == type) > 2)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
     }
 

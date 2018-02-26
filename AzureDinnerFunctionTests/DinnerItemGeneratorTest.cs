@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AzureDinnerFunction;
+using System.Linq;
 
 namespace AzureDinnerFunctionTests
 {
@@ -14,7 +15,7 @@ namespace AzureDinnerFunctionTests
         [TestMethod]
         public void ShouldGenerateListOfItems()
         {
-            Assert.AreEqual(3, generator.GetDinnerOptions(3));
+            Assert.AreEqual(15, generator.GetDinnerOptions(15).Count);
         }
     }
 }

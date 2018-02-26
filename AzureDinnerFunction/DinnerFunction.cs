@@ -13,7 +13,7 @@ namespace AzureDinnerFunction
     public static class DinnerFunction
     {
         [FunctionName("DinnerFunction")]
-        public static void Run([TimerTrigger("0 00 3 * * Mon")]TimerInfo myTimer, TraceWriter log)
+        public static void Run([TimerTrigger("0 30 3 * * Mon")]TimerInfo myTimer, TraceWriter log)
         {
             log.Info($"Start: {DateTime.Now}");
 
